@@ -11,7 +11,6 @@ include '../src/log.php';
 // Test compelte logger
 $filepath = './test.log';
 $lev = EasyLogger::FINE;
-$mailLev = EasyLogger::FINE;
 
 $logger = new EasyLogger($filepath, $lev, 300);
 

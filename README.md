@@ -1,6 +1,6 @@
 ##Usage example
 
-    $logger = new EasyLogger($filepath, $lev, 300);
+    $logger = new EasyLogger('/path/to/file.log', EasyLogger::FINE, 300);
     $logger->fine('fine message');
     $logger->info('info message');
     $logger->warning('warning message');

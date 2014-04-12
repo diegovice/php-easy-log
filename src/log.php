@@ -3,7 +3,7 @@
  * Easy logger for PHP
  * 
  * @author Diego Vicentini
- * @version 1.0
+ * @version 1.1
  */
 
 class EasyLogger {

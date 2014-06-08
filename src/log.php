@@ -44,13 +44,20 @@ class EasyLogger {
 	private $filesize = 0;
 
 	/**
+	 * Istanza univoca della classe
+	 *
+	 * @var unknown
+	 */
+	private static $instance = null;
+	
+	/**
 	 * Create a new logger
 	 * 
 	 * @param $filepath file path
 	 * @param $lev log level
 	 * @param $rotateSize size limiti for rotation (in bytes) 0 for no rotation
 	 */
-	public function __construct($filepath, $lev, $rotateSize = 0) {
+	private function __construct($filepath, $lev, $rotateSize = 0) {
 		$this->filename = $filepath;
 		$this->level = $lev;
 		
@@ -70,7 +77,26 @@ class EasyLogger {
 		// Open log file
 		$this->f = fopen($this->filename, 'a');
 	}
-		
+
+	/**
+	 * Returns singleton instance
+	 *
+	 * @param unknown $filepath
+	 * @param unknown $lev
+	 * @param number $rotateSize
+	 * @return EasyLogger singleton instance
+	 */
+	public static function getInstance($filepath, $lev, $rotateSize = 0)
+	{
+		if(self::$instance == null)
+		{
+			$c = __CLASS__;
+			self::$instance = new $c($filepath, $lev, $rotateSize);
+		}
+	
+		return self::$instance;
+	}
+	
 	/**
 	 * Check if a rotation filename exists.
 	 * In this case append to filename a number.

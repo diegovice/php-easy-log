@@ -12,20 +12,7 @@ include '../src/log.php';
 $filepath = './test.log';
 $lev = EasyLogger::FINE;
 
-$logger = new EasyLogger($filepath, $lev, 300);
-
-$logger->fine('fine message');
-$logger->info('info message');
-$logger->warning('warning message');
-$logger->severe('severe warning');
-
-$logger->close();
-
-// Test log with only log file (no rotation)
-$filepath = './test_onlylog.log';
-$lev = EasyLogger::FINE;
-
-$logger = new EasyLogger($filepath, $lev);
+$logger = EasyLogger::getInstance($filepath, $lev, 300);
 
 $logger->fine('fine message');
 $logger->info('info message');
